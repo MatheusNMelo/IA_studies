@@ -1,17 +1,15 @@
-version: '2.3'
-
 services:
 
   # During development we want to build our Docker image from relevant
   # Dockerfiles, as opposed to pulling it from a repository somewhere.
 
   lab:
-    build: 
+    build:
       context: notebooks
       dockerfile: composer/Dockerfile
 
   assessment:
-    build: 
+    build:
       context: notebooks/docker_router
     ports:
       - $DEV_ASSESSMENT_PORT:8080
@@ -21,36 +19,36 @@ services:
       - $DEV_NGINX_PORT:80
 
   docker_router:
-    build: 
+    build:
       context: notebooks/docker_router
       dockerfile: Dockerfile
 
   llm_client:
-    build: 
+    build:
       context: notebooks/llm_client
       dockerfile: Dockerfile_client
 
   frontend:
-    build: 
+    build:
       context: notebooks/frontend
       dockerfile: Dockerfile
 
   frontend_rproxy:
-    build: 
+    build:
       context: notebooks/frontend
       dockerfile: Dockerfile
 
   chatbot:
-    build: 
+    build:
       context: notebooks/chatbot
       dockerfile: Dockerfile
 
   chatbot_rproxy:
-    build: 
+    build:
       context: notebooks/chatbot
       dockerfile: Dockerfile
 
   mod:
-    build: 
+    build:
       context: notebooks/docker_router
       dockerfile: Dockerfile
